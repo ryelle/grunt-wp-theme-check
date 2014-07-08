@@ -37,47 +37,53 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.path
 Type: `String`
-Default value: `',  '`
+Default value: `null`
 
-A string value that is used to do something with whatever.
+Path to WordPress. Used for wp-cli's `--path` flag. Required.
 
-#### options.punctuation
+#### options.theme
 Type: `String`
-Default value: `'.'`
+Default value: `null`
 
-A string value that is used to do something else with whatever else.
+Name of the theme to test. Use the folder name here, not the "Theme Name".
 
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
-```js
-grunt.initConfig({
-  wp_theme_check: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+In this example, we're just checking one theme, twentyfourteen, and WordPress lives in the /srv/www/wordpress-trunk directory.
 
 ```js
 grunt.initConfig({
   wp_theme_check: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
+      path: '/srv/www/wordpress-trunk',
+      theme: 'twentyfourteen'
+    }
+  },
+});
+```
+
+#### Custom Options
+In this example, we're testing two themes in the same WordPress install.
+
+```js
+grunt.initConfig({
+  wp_theme_check: {
+    options: {
+      path: '/srv/www/wordpress-trunk'
     },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+    twentyfourteen: {
+      options: {
+        theme: 'twentyfourteen'
+      }
     },
+    twentythirteen: {
+      options: {
+        theme: 'twentythirteen'
+      }
+    }
   },
 });
 ```
@@ -86,4 +92,5 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+
+0.1.0: Initial release
