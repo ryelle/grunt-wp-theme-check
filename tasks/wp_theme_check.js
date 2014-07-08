@@ -22,14 +22,14 @@ module.exports = function(grunt) {
 
     grunt.event.once('wpThemeCheck', function( result, err ){
 
-      if ( result.indexOf( 'Success:' ) != -1 ) {
+      if ( result.indexOf( 'Success:' ) !== -1 ) {
         if ( err ) {
           grunt.log.writeln( err );
         }
         grunt.log.ok( result );
         done( true );
 
-      } else if ( result.indexOf( 'Fail:' ) != -1 ) {
+      } else if ( result.indexOf( 'Fail:' ) !== -1 ) {
         grunt.log.errorlns( err );
         grunt.log.writeln( '' );
         grunt.log.error( result );
@@ -73,7 +73,7 @@ module.exports = function(grunt) {
         var table = new Table({ head: ['name', 'status', 'update', 'version'] });
         _.each(themes, function(theme){
           table.push([ theme.name, theme.status, theme.update, theme.version ]);
-        })
+        });
         grunt.log.writeln( table.toString() );
 
         grunt.log.error( 'The theme to check should be one of the above themes.' );
