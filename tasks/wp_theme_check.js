@@ -21,18 +21,26 @@ module.exports = function(grunt) {
     grunt.log.debug( 'Running: ' + command );
 
     grunt.event.once('wpThemeCheck', function( result, err ){
-      if ( err ){
+
+      if ( result.indexOf( 'Success:' ) != -1 ) {
+        if ( err ) {
+          grunt.log.writeln( err );
+        }
+        grunt.log.ok( result );
+        done( true );
+
+      } else if ( result.indexOf( 'Error:' ) != -1 ) {
+        grunt.log.errorlns( err );
+        grunt.log.writeln( '' );
+        grunt.log.error( result );
+        done( false )
+
+      } else {
         grunt.log.debug( err );
         grunt.log.error( 'WordPress encountered an error, check your WP install.' );
         done( false );
-      } else {
-        if ( result.indexOf( 'Success' ) === 0 ) {
-          grunt.log.ok( result );
-        } else {
-          grunt.log.write( result );
-        }
-        done( true );
       }
+
     });
 
     WP.load({ path: options.path }, function( WP ) {
