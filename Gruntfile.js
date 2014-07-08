@@ -71,6 +71,6 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['clean', 'wp_theme_check', 'nodeunit']);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'test']);
+  grunt.registerTask('default', ['jshint', 'wp_theme_check']);
 
 };
