@@ -30,21 +30,18 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     wp_theme_check: {
-      noTheme: {
+      options: {
+        path: '/srv/www/wordpress-trunk'
+      },
+      noTheme: {},
+      twentyfourteen: {
         options: {
-          path: '/srv/www/wordpress-trunk'
+          theme: 'twentyfourteen'
         }
       },
-      museum: {
+      twentythirteen: {
         options: {
-          theme: 'museum/build',
-          path: '/srv/www/wordpress-trunk'
-        }
-      },
-      flatWriter: {
-        options: {
-          theme: 'flat-writer/src',
-          path: '/srv/www/wordpress-trunk'
+          theme: 'twentythirteen'
         }
       }
     },
