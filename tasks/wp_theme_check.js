@@ -29,11 +29,11 @@ module.exports = function(grunt) {
         grunt.log.ok( result );
         done( true );
 
-      } else if ( result.indexOf( 'Error:' ) != -1 ) {
+      } else if ( result.indexOf( 'Fail:' ) != -1 ) {
         grunt.log.errorlns( err );
         grunt.log.writeln( '' );
         grunt.log.error( result );
-        done( false )
+        done( false );
 
       } else {
         grunt.log.debug( err );
