@@ -43,6 +43,11 @@ module.exports = function(grunt) {
         options: {
           theme: 'twentythirteen'
         }
+      },
+      fakeTheme: {
+        options: {
+          theme: 'twentysixteen'
+        }
       }
     },
 

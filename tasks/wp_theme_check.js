@@ -47,9 +47,14 @@ module.exports = function(grunt) {
       grunt.event.emit( 'wpReady', WP );
 
       // Check that options.theme is a theme.
-
-      exec( command, function( err, stdout, stderr ){
-        grunt.event.emit( 'wpThemeCheck', stdout, stderr );
+      WP.theme.status( options.theme, function( err, info ){ //get CLI info
+        if ( ! err ) {
+          exec( command, function( err, stdout, stderr ){
+            grunt.event.emit( 'wpThemeCheck', stdout, stderr );
+          });
+        } else {
+          list_themes( options, done );
+        }
       });
 
     });
