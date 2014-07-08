@@ -30,11 +30,21 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     wp_theme_check: {
-      default_options: {
+      // noTheme: {
+      //   options: {
+      //     path: '/srv/www/wordpress-trunk'
+      //   }
+      // },
+      allotrope: {
         options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
+          theme: 'allotrope',
+          path: '/srv/www/wordpress-trunk'
+        }
+      },
+      museum: {
+        options: {
+          theme: 'museum/build',
+          path: '/srv/www/wordpress-trunk'
         }
       }
     },
