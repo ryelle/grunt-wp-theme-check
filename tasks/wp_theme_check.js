@@ -10,22 +10,40 @@
 
 var WP = require('wp-cli'),
     Table = require('cli-table'),
-    _ = require('underscore');
+    _ = require('underscore'),
+    exec = require('child_process').exec;
 
 module.exports = function(grunt) {
 
   function run_check( options, done ){
-    grunt.log.debug( 'Checking theme: ' + options.theme );
+    var command = "wp theme review check " + options.theme + " --path=" + options.path;
+
+    grunt.log.debug( 'Running: ' + command );
 
     grunt.event.once('wpThemeCheck', function( result, err ){
-      grunt.log.debug( 'Results: ' + JSON.stringify( result ) );
+      if ( err ){
+        grunt.log.debug( err );
+        grunt.log.error( 'WordPress encountered an error, check your WP install.' );
+        done( false );
+      } else {
+        if ( result.indexOf( 'Success' ) === 0 ) {
+          grunt.log.ok( result );
+        } else {
+          grunt.log.write( result );
+        }
+        done( true );
+      }
     });
 
     WP.load({ path: options.path }, function( WP ) {
       grunt.event.emit( 'wpReady', WP );
-      WP.trt.check( options.theme, function( err, result ){ //get CLI info
-       grunt.event.emit( 'wpThemeCheck', result, err );
+
+      // Check that options.theme is a theme.
+
+      exec( command, function( err, stdout, stderr ){
+        grunt.event.emit( 'wpThemeCheck', stdout, stderr );
       });
+
     });
 
   }
