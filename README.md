@@ -19,6 +19,10 @@ grunt.loadNpmTasks('grunt-wp-theme-check');
 
 ## The "wp_theme_check" task
 
+### Requirements
+
+This grunt plugin requires [WP-CLI](http://wp-cli.org) and [this modified version of the Theme Check plugin](https://github.com/ryelle/theme-check). If you can run `wp theme review check <theme-name>`, you'll be able to use this plugin.
+
 ### Overview
 In your project's Gruntfile, add a section named `wp_theme_check` to the data object passed into `grunt.initConfig()`.
 
