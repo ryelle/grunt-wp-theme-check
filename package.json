@@ -1,7 +1,7 @@
 {
   "name": "grunt-wp-theme-check",
   "description": "Grunt plugin to run Theme Check",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/ryelle/grunt-wp-theme-check",
   "author": {
     "name": "ryelle",
@@ -41,6 +41,6 @@
     "underscore": "~1.6.0"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin", "test", "testing", "wordpress"
   ]
 }
