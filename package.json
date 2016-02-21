@@ -33,7 +33,7 @@
     "grunt-contrib-nodeunit": "^0.3.3"
   },
   "peerDependencies": {
-    "grunt": "~0.4.5"
+    "grunt": ">=0.4.0"
   },
   "dependencies": {
     "wp-cli": "0.0.3",
@@ -41,6 +41,9 @@
     "underscore": "~1.6.0"
   },
   "keywords": [
-    "gruntplugin", "test", "testing", "wordpress"
+    "gruntplugin",
+    "test",
+    "testing",
+    "wordpress"
   ]
 }
